@@ -14,7 +14,7 @@ This document provides detailed descriptions of all parameters, input file forma
 | `-g` | Path | Yes | — | Genome FASTA file path. Supports gzipped (`.gz`) and plain FASTA formats. |
 | `-t` | Integer | Yes | — | Number of CPU threads for parallel execution. Must be a positive integer. |
 | `-o` | Path | Yes | — | Output directory for intermediate and final results. Will be created if it does not exist. |
-| `-m` | Path | Yes | — | Path to Singularity `.sif` image file containing bioinformatics tools (barrnap, seqkit, cd-hit-est, python). |
+| `-m` | Path | Yes | — | Path to Singularity `.sif` image file (`singularity/pan_fungi.sif`) containing all bioinformatics tools (barrnap, seqkit, cd-hit-est, BLAST, Bowtie2, Samtools, Python, R). |
 | `-l` | Integer | No | 40 | Probe length in nucleotides. |
 | `-w` | Integer | No | 40 | Sliding window step size in nucleotides. Recommended to match probe length. |
 | `-c` | Float | No | 0.8 | CD-HIT-EST sequence identity threshold for clustering (range: 0.0–1.0, recommended: 0.8–0.9). |
@@ -50,7 +50,7 @@ This document provides detailed descriptions of all parameters, input file forma
 | `-g` | Path | Yes | — | Genome list file (TSV: genome_path, genus, species_id). Each line represents one strain. |
 | `-t` | Integer | Yes | — | Number of CPU threads. |
 | `-o` | Path | Yes | — | Output directory for multi-species probe design results. |
-| `-m` | Path | Yes | — | Singularity image path. |
+| `-m` | Path | Yes | — | Singularity image path (`singularity/pan_fungi.sif`). |
 | `-r` | Path | No | `data/rRNA_list.tsv` | rRNA configuration file (TSV: rna_type, sliding_step, consistency, width). Defines all probe parameter combinations to test. |
 | `-h` | Flag | No | — | Display help message. |
 
@@ -139,7 +139,7 @@ Note: The output directory name encodes these parameters as `{type}_{step}_{iden
 | `-r` | Path | Yes | — | Path to rRNA directory containing `sep_*.fasta` files (output from `myco_rprobe_multi.sh`). |
 | `-t` | Integer | Yes | — | Number of CPU threads. |
 | `-o` | Path | Yes | — | Output directory. |
-| `-m` | Path | Yes | — | Singularity image path. |
+| `-m` | Path | Yes | — | Singularity image path (`singularity/pan_fungi.sif`). |
 | `-h` | Flag | No | — | Display help message. |
 
 ### Library Config Format
@@ -186,7 +186,7 @@ Candida_albicans  P1  /path/to/R1.fq.gz  /path/to/R2.fq.gz  /path/to/genome.fa  
 | `-g` | Path | Yes | — | Library config TSV (same format as evaluation). |
 | `-t` | Integer | Yes | — | Number of CPU threads. |
 | `-o` | Path | Yes | — | Output directory. |
-| `-m` | Path | Yes | — | Singularity image (CIRIquant container). |
+| `-m` | Path | Yes | — | Singularity image path (`singularity/pan_fungi.sif`). |
 | `-h` | Flag | No | — | Display help message. |
 
 ### Output Structure
@@ -208,7 +208,7 @@ Candida_albicans  P1  /path/to/R1.fq.gz  /path/to/R2.fq.gz  /path/to/genome.fa  
 | `-g` | Path | Yes | — | circRNA config TSV (genome, gtf). |
 | `-t` | Integer | Yes | — | Number of CPU threads. |
 | `-o` | Path | Yes | — | Output directory. |
-| `-m` | Path | Yes | — | Singularity image path. |
+| `-m` | Path | Yes | — | Singularity image path (`singularity/pan_fungi.sif`). |
 | `-h` | Flag | No | — | Display help message. |
 
 ### Input Format
@@ -412,7 +412,7 @@ Usage: python s02_mismatch_pileup.py <pileup_file> <depth_file> <probe_length>
 | `data/fungi_sliva_18S.fasta` | FASTA | SILVA fungal 18S rRNA reference sequences with phylogenetic lineage in headers. |
 | `data/fungi_sliva_28S.fasta` | FASTA | SILVA fungal 28S rRNA reference sequences with phylogenetic lineage in headers. |
 | `data/fungi_taxonomy_info.tsv` | TSV | Fungal taxonomy information (tax_id, rank, name). |
-| `data/fungi_taxonomy_nodes.tsv` | TSV | Fungal taxonomy node relationships (tax_id \|\| parent_id \|\| rank \|\| ...). |
+| `data/fungi_taxonomy_nodes.tsv.gz` | Gzip+TSV | Fungal taxonomy node relationships (tax_id \|\| parent_id \|\| rank \|\| ...). Compressed; decompress before use. |
 | `data/rRNA_list.tsv` | TSV | Default rRNA probe configuration (length 40–59 nt). |
 | `data/rRNA_list2.tsv` | TSV | Extended rRNA probe configuration (length 55–65 nt, finer granularity). |
 | `data/rRNA_list.sh` | Shell | Helper script for rRNA list generation. |

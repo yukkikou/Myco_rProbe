@@ -80,12 +80,8 @@ Myco_rProbe is a comprehensive bioinformatics pipeline for designing, evaluating
 
 ### Software
 - [Singularity](https://docs.sylabs.io/) (v3.x) for containerized tool execution
-- Required containers (provided as `.sif` files):
-  - `pan_fungi3.sif` / `pan_fungi5.sif` - Python environment with bioinformatics tools
-  - `ciriquant-v1.1.3.sif` - CIRIquant for circRNA analysis
-  - `blast-2.13.0.sif` - BLAST for sequence alignment
-  - `seqkit-2.2.0.sif` - FASTA/Q sequence manipulation
-  - `samtools-1.14.sif` - SAM/BAM processing
+- Required container:
+  - `singularity/pan_fungi.sif` - Consolidated image with all bioinformatics tools (barrnap, seqkit, cd-hit-est, BLAST, Bowtie2, Samtools, fastp, HISAT2, BWA, Python environment with Biopython/primer3-py/pandas/matplotlib/numpy, R with tidyverse/purrr)
 
 ### Python Dependencies (in container)
 - Biopython
@@ -121,7 +117,7 @@ bash myco_rprobe_single.sh \
     -g example/Aspergillus_fumigatus.ASM265v1.dna.toplevel.fa.gz \
     -t 20 \
     -o single_af \
-    -m /path/to/pan_fungi3.sif
+    -m singularity/pan_fungi.sif
 ```
 
 | Parameter | Description |
@@ -142,7 +138,7 @@ bash myco_rprobe_multi.sh \
     -g example/fungi_genome.list \
     -t 10 \
     -o pathgen_fungi \
-    -m /path/to/pan_fungi3.sif \
+    -m singularity/pan_fungi.sif \
     -r data/rRNA_list2.tsv
 ```
 
@@ -171,7 +167,7 @@ bash myco_rprobe_evaluate.sh \
     -g example/batch_lib_config.tsv \
     -t 10 \
     -o batch_mapping \
-    -m /path/to/pan_fungi5.sif \
+    -m singularity/pan_fungi.sif \
     -r pathgen_fungi
 ```
 
@@ -187,7 +183,7 @@ bash myco_rprobe_circiden.sh \
     -g example/batch_lib_config.tsv \
     -t 10 \
     -o batch_mapping \
-    -m /path/to/ciriquant.sif
+    -m singularity/pan_fungi.sif
 ```
 
 ### 5. circRNA Sequence Extraction
