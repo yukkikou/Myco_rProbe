@@ -1,0 +1,57 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Singularity images
+*.sif
+
+# Raw data
+*.fastq.gz
+*.fq.gz
+*.bam
+*.sam
+*.bai
+
+# Output directories
+single_*/
+pathgen_*/
+batch_mapping*/
+mapping/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+slurm-*.out
+slurm-*.err
+
+# Large intermediate files
+*.bt2
+
+# NCBI taxonomy nodes (large file - use .gz version instead)
+fungi_taxonomy_nodes.tsv
+*.bt2l
+*.ht2
+*.bwt
+*.ann
+*.amb
+*.pac
+*.sa
