@@ -1,0 +1,1 @@
+singularity/pan_fungi.sif.part* filter=lfs diff=lfs merge=lfs -text
