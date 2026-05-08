@@ -278,7 +278,6 @@ output_dir/
 | `myco_rprobe_evaluate.sh` | In silico probe evaluation with RNA-seq |
 | `myco_rprobe_circiden.sh` | Circular RNA identification |
 | `myco_rprobe_circseq.sh` | circRNA sequence extraction |
-| `merge_circ_byid.sh` | Merge circRNA results by group (SLURM) |
 | `src/circ_blast.sh` | BLAST array job script |
 | `src/plus_design/s01_run_mpile.sh` | Pileup generation for plus design |
 | `src/plus_design/s02_mismatch_pileup.py` | Mismatch pileup analysis |
@@ -303,12 +302,7 @@ output_dir/
 
 For large-scale jobs on SLURM clusters, the pipeline provides SBATCH-ready array scripts:
 
-```bash
-# Merge circRNA results by group
-sbatch merge_circ_byid.sh
-```
-
-Additional SLURM job scripts can be created from the main pipeline scripts using the `--array` directive.
+The pipeline scripts can be wrapped with SBATCH directives for SLURM cluster submission.
 
 ---
 

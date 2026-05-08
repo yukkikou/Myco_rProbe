@@ -277,7 +277,6 @@ output_dir/
 | `myco_rprobe_evaluate.sh` | 基于 RNA-seq 的计算机模拟探针评估 |
 | `myco_rprobe_circiden.sh` | 环状 RNA 鉴定 |
 | `myco_rprobe_circseq.sh` | circRNA 序列提取 |
-| `merge_circ_byid.sh` | 按分组合并 circRNA 结果（SLURM） |
 | `src/circ_blast.sh` | BLAST 数组作业脚本 |
 | `src/plus_design/s01_run_mpile.sh` | 用于 plus 设计的 pileup 生成 |
 | `src/plus_design/s02_mismatch_pileup.py` | 错配 pileup 分析 |
@@ -302,12 +301,7 @@ output_dir/
 
 在 SLURM 集群上运行大规模作业：
 
-```bash
-# 按分组合并 circRNA 结果
-sbatch merge_circ_byid.sh
-```
-
-也可将主流程脚本直接封装为 SLURM 批处理作业。
+可将主流程脚本使用 SBATCH 指令封装后提交 SLURM 集群运行。
 
 ---
 
