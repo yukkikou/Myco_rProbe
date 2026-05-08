@@ -298,12 +298,6 @@ output_dir/
 
 ---
 
-## SLURM Cluster Usage
-
-For large-scale jobs on SLURM clusters, the pipeline provides SBATCH-ready array scripts:
-
-The pipeline scripts can be wrapped with SBATCH directives for SLURM cluster submission.
-
 ---
 
 ## Citation
